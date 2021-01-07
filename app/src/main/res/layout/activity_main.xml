@@ -11,19 +11,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context=".MainActivity"
     xmlns:tools="http://schemas.android.com/tools">
-    <Button
-        android:id="@+id/buttonstart"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:backgroundTint="#00D535"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mainhigh"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:text="Highscore:"
+        android:layout_below="@id/button3"        >
+    </TextView>
+    <ImageButton
+        android:id="@+id/buttonstart"
+        android:layout_width="350dp"
+        android:src="@drawable/sttart"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#00000000"
         android:onClick="startGame"
-        android:text="Start"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="180dp"
+        />
 
     <Button
         android:id="@+id/button2"
+        android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
@@ -46,25 +62,14 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select"
+        android:text="Select Audio"
+        android:onClick="startSound"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:backgroundTint="#ff9e22"
         android:textSize="30sp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/button2"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

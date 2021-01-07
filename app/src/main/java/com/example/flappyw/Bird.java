@@ -13,10 +13,8 @@ public class Bird extends BaseObject{
         this.drop = 0;
     }
     public void draw(Canvas canvas){
-        drop();
-        System.out.println(this.y);
         canvas.drawBitmap(getBm(),this.x,this.y,null);
-
+        drop();
     }
 
     private void drop() {
@@ -43,22 +41,27 @@ public class Bird extends BaseObject{
 
     @Override
     public Bitmap getBm(){
+        System.out.println(drop);
         if(this.drop<0){
             Matrix matrix = new Matrix();
             matrix.postRotate(-25);
             return Bitmap.createBitmap(scaledbm, 0,0 , scaledbm.getWidth(),scaledbm.getHeight(),matrix,true);
-        }else if (this.drop>= 0){
+        }else if (this.drop> 0){
             Matrix matrix = new Matrix();
             if (drop<70){
                 matrix.postRotate(-25+(2*drop));
-            }else{
-                matrix.postRotate(45);
+            }
+            else{
+                matrix.postRotate(30);
             }
 
             return  Bitmap.createBitmap(scaledbm, 0,0 , scaledbm.getWidth(),scaledbm.getHeight(),matrix,true);
+        }else {
+            Matrix matrix = new Matrix();
+            return  Bitmap.createBitmap(scaledbm, 0,0 , scaledbm.getWidth(),scaledbm.getHeight(),matrix,true);
         }
 
-        return this.scaledbm;
+        //return this.scaledbm;
     }
 
 }

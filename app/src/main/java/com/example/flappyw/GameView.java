@@ -8,11 +8,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -43,6 +45,7 @@ public class GameView extends View {
         super(context, attrs);
         initBird();
         initPipe();
+
 
 
 
@@ -89,7 +92,7 @@ public class GameView extends View {
     }
     private void initBird() {
         bird = new Bird();
-        bird.setWidth(100*Constants.SCREEN_WIDTH/1080);
+        bird.setWidth(120*Constants.SCREEN_WIDTH/1080);
         bird.setHeight(100*Constants.SCREEN_HEIGHT/1920);
         bird.setY(Constants.SCREEN_HEIGHT/2-bird.getHeight());
         bird.setX(100*Constants.SCREEN_WIDTH/1080);
@@ -103,6 +106,7 @@ public class GameView extends View {
         super.draw(canvas);
 
             if (startgame == false){
+                bird.setDrop(0);
                 bird.draw(canvas);
             }
 
@@ -131,7 +135,7 @@ public class GameView extends View {
                     canvas.drawRect(playerrect, paint);
 
 
-                    handler.postDelayed(runnable, 10);
+                    handler.postDelayed(runnable, 20);
                     for (int b = 0; b < sumpipe; b++) {
                         collision(playerrect, arrayPipes.get(b).getRect());
 
@@ -151,9 +155,11 @@ public class GameView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
         if(action == MotionEvent.ACTION_DOWN){
+
             bird.setDrop(-15);
             if(startgame==false) {
                 invalidate();
+
                 startgame = true;
             }
 
@@ -167,7 +173,6 @@ public class GameView extends View {
     public boolean collision(Rect a,Rect b ){
         if(a.intersect(b) || bird.getY() < 0 || bird.getY() >= Constants.SCREEN_HEIGHT - bird.getHeight()) {
             gamerun = false;
-
         }
 
         return gamerun;
